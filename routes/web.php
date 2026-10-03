@@ -9,6 +9,8 @@ Route::get('/', function () {
 
 Route::get('/drives', [DrivesController::class, 'index']);
 
+Route::get('/drives/{id}', [DrivesController::class, 'show']);
+
 Route::get('/about', function () {
     return view('about');
 });

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\View\View;
+
 class DrivesController extends Controller
 {
     public $drives = [];
@@ -49,4 +51,12 @@ class DrivesController extends Controller
         return view('drives', ['drives' => $this->drives]);
     }
 
+    public function show(int $id): View
+    {
+        abort_unless(isset($this->drives[$id]), 404);
+
+        $drive = $this->drives[$id];
+
+        return view('drives.show', ['drive' => $drive]);
+    }
 }

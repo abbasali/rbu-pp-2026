@@ -11,16 +11,22 @@
                 <th class="px-4 py-3 text-right">Package (LPA)</th>
                 <th class="px-4 py-3 text-right">Min CGPA</th>
                 <th class="px-4 py-3">Last Date</th>
+                <th class="px-4 py-3"><span class="sr-only">Actions</span></th>
             </tr>
         </thead>
         <tbody class="divide-y divide-gray-100">
             @foreach ($drives as $drive)
                 <tr class="hover:bg-gray-50">
-                    <td class="px-4 py-3 font-medium">{{ $drive['company'] }}</td>
+                    <td class="px-4 py-3 font-medium">
+                        <a href="{{ url('/drives/'.$drive['id']) }}" class="hover:text-indigo-600 hover:underline">{{ $drive['company'] }}</a>
+                    </td>
                     <td class="px-4 py-3">{{ $drive['role'] }}</td>
                     <td class="px-4 py-3 text-right">{{ number_format($drive['package_lpa'], 1) }}</td>
                     <td class="px-4 py-3 text-right">{{ number_format($drive['min_cgpa'], 1) }}</td>
                     <td class="px-4 py-3">{{ \Illuminate\Support\Carbon::parse($drive['last_date'])->format('d M Y') }}</td>
+                    <td class="px-4 py-3 text-right">
+                        <a href="{{ url('/drives/'.$drive['id']) }}" class="font-medium text-indigo-600 hover:text-indigo-800">View &rarr;</a>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
