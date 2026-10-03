@@ -44,3 +44,7 @@ Route::get('/drives', function () {
 
     return view('drives', ['drives' => $drives]);
 });
+
+Route::get('/about', function () {
+    return view('about');
+});
