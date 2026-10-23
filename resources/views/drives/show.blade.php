@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 @php
-    $lastDate = \Illuminate\Support\Carbon::parse($drive['last_date'])->endOfDay();
+    $lastDate = \Illuminate\Support\Carbon::parse($drive->last_date)->endOfDay();
     $isOpen = $lastDate->isFuture();
     $daysLeft = (int) now()->startOfDay()->diffInDays($lastDate->copy()->startOfDay());
 @endphp
@@ -14,11 +14,11 @@
     <div class="flex flex-col gap-4 border-b border-gray-200 bg-gradient-to-r from-indigo-600 to-violet-600 p-6 text-white sm:flex-row sm:items-center sm:justify-between">
         <div class="flex items-center gap-4">
             <div class="flex size-14 shrink-0 items-center justify-center rounded-lg bg-white/20 text-2xl font-bold">
-                {{ strtoupper(substr($drive['company'], 0, 1)) }}
+                {{ strtoupper(substr($drive->company, 0, 1)) }}
             </div>
             <div>
-                <h1 class="text-2xl font-semibold">{{ $drive['company'] }}</h1>
-                <p class="text-indigo-100">{{ $drive['role'] }}</p>
+                <h1 class="text-2xl font-semibold">{{ $drive->company }}</h1>
+                <p class="text-indigo-100">{{ $drive->role }}</p>
             </div>
         </div>
 
@@ -37,12 +37,12 @@
         <div class="p-6">
             <dt class="text-sm font-medium text-gray-500">Package</dt>
             <dd class="mt-1 text-2xl font-semibold text-gray-900">
-                &#8377;{{ number_format($drive['package_lpa'], 1) }} <span class="text-base font-normal text-gray-500">LPA</span>
+                &#8377;{{ number_format($drive->package_lpa, 1) }} <span class="text-base font-normal text-gray-500">LPA</span>
             </dd>
         </div>
         <div class="p-6">
             <dt class="text-sm font-medium text-gray-500">Minimum CGPA</dt>
-            <dd class="mt-1 text-2xl font-semibold text-gray-900">{{ number_format($drive['min_cgpa'], 1) }}</dd>
+            <dd class="mt-1 text-2xl font-semibold text-gray-900">{{ number_format($drive->min_cgpa, 1) }}</dd>
         </div>
         <div class="p-6">
             <dt class="text-sm font-medium text-gray-500">Last Date to Apply</dt>

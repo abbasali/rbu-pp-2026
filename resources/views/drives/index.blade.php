@@ -18,14 +18,14 @@
             @foreach ($drives as $drive)
                 <tr class="hover:bg-gray-50">
                     <td class="px-4 py-3 font-medium">
-                        <a href="{{ url('/drives/'.$drive['id']) }}" class="hover:text-indigo-600 hover:underline">{{ $drive['company'] }}</a>
+                        <a href="{{ url('/drives/'.$drive->id) }}" class="hover:text-indigo-600 hover:underline">{{ $drive->company }}</a>
                     </td>
-                    <td class="px-4 py-3">{{ $drive['role'] }}</td>
-                    <td class="px-4 py-3 text-right">{{ number_format($drive['package_lpa'], 1) }}</td>
-                    <td class="px-4 py-3 text-right">{{ number_format($drive['min_cgpa'], 1) }}</td>
-                    <td class="px-4 py-3">{{ \Illuminate\Support\Carbon::parse($drive['last_date'])->format('d M Y') }}</td>
+                    <td class="px-4 py-3">{{ $drive->role }}</td>
+                    <td class="px-4 py-3 text-right">{{ number_format($drive->package_lpa, 1) }}</td>
+                    <td class="px-4 py-3 text-right">{{ number_format($drive->min_cgpa, 1) }}</td>
+                    <td class="px-4 py-3">{{ \Illuminate\Support\Carbon::parse($drive->last_date)->format('d M Y') }}</td>
                     <td class="px-4 py-3 text-right">
-                        <a href="{{ url('/drives/'.$drive['id']) }}" class="font-medium text-indigo-600 hover:text-indigo-800">View &rarr;</a>
+                        <a href="{{ url('/drives/'.$drive->id) }}" class="font-medium text-indigo-600 hover:text-indigo-800">View &rarr;</a>
                     </td>
                 </tr>
             @endforeach
