@@ -29,8 +29,16 @@
                     <td class="px-4 py-3 text-right">{{ number_format($drive->package_lpa, 1) }}</td>
                     <td class="px-4 py-3 text-right">{{ number_format($drive->min_cgpa, 1) }}</td>
                     <td class="px-4 py-3">{{ \Illuminate\Support\Carbon::parse($drive->last_date)->format('d M Y') }}</td>
-                    <td class="px-4 py-3 text-right">
-                        <a href="{{ url('/drives/'.$drive->id) }}" class="font-medium text-indigo-600 hover:text-indigo-800">View &rarr;</a>
+                    <td class="px-4 py-3">
+                        <div class="flex items-center justify-end gap-3 whitespace-nowrap">
+                            <a href="{{ url('/drives/'.$drive->id) }}" class="font-medium text-indigo-600 hover:text-indigo-800">View</a>
+                            <a href="{{ url('/drives/'.$drive->id.'/edit') }}" class="font-medium text-gray-600 hover:text-gray-900">Edit</a>
+                            <form method="POST" action="{{ url('/drives/'.$drive->id) }}" onsubmit="return confirm(@js('Delete '.$drive->company.' – '.$drive->role.'? This cannot be undone.'))">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="font-medium text-red-600 hover:text-red-800">Delete</button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
             @endforeach
