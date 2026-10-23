@@ -1,6 +1,11 @@
 @extends('layouts.app')
 @section('content')
-<h1 class="mb-6 text-2xl font-semibold">Placement Drives</h1>
+<div class="mb-6 flex items-center justify-between gap-4">
+    <h1 class="text-2xl font-semibold">Placement Drives</h1>
+    <a href="{{ url('/drives/create') }}" class="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700">
+        + New Drive
+    </a>
+</div>
 
 <div class="overflow-x-auto rounded-lg border border-gray-200 bg-white shadow-sm">
     <table class="min-w-full divide-y divide-gray-200 text-sm">
