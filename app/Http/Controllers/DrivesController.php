@@ -33,7 +33,7 @@ class DrivesController extends Controller
 
     public function show(int $id): View
     {
-        $drive = Drive::where('id', $id)->first();
+        $drive = Drive::findOrFail($id);
 
         return view('drives.show', ['drive' => $drive]);
     }
